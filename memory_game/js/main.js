@@ -33,7 +33,7 @@ function flipCard(){
     let cardId = this.getAttribute('data-id');
     this.setAttribute('src', cards[cardId].cardImage);
     
-    checkForMatch(cards[cardId], cards[cardId]);
+    checkForMatch();
 
 }
 
