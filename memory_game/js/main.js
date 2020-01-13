@@ -20,12 +20,11 @@ const cards = [
   {
 	rank : "king",
 	suit : "diamonds",
-	cardImage : "images/king-of-hearts.png"
+	cardImage : "images/king-of-diamonds.png"
   }
 ]
 
 let cardsInPlay = [];
-
 
 
 
