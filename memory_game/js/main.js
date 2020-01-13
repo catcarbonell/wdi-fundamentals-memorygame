@@ -21,32 +21,46 @@ const cards = [
 	rank : "king",
 	suit : "diamonds",
 	cardImage : "images/king-of-hearts.png"
-  },
+  }
 ]
 
 let cardsInPlay = [];
 
+
+
+
+function flipCard(){
+
+    let cardId = this.getAttribute('data-id');
+    this.setAttribute('src', cards[cardId].cardImage);
+    
+    checkForMatch(cards[cardId], cards[cardId]);
+
+}
+
+
+function createBoard(){
+    for(i = 0; i < cards.length; i++){
+    	 let cardElement = document.createElement('img');
+    	 let gb = document.getElementById('game-board');
+    	 cardElement.setAttribute('src', 'images/back.png');
+    	 cardElement.setAttribute('data-id', i);
+    	 cardElement.addEventListener('click', flipCard);
+    	 gb.appendChild(cardElement);
+    }
+
+ 
+}
+
 function checkForMatch(){
-	if (cardsInPlay[0] === cardsInPlay[1]){
+
+	if ( cards[0].rank === cards[1].rank){
 	console.log("You found a match!");
     } else {
 	console.log("Sorry, not a match. Try again!");
     }
 }
 
-function flipCard(cardId){
 
-    cardsInPlay.push(cards[cardId].rank);
-
-    console.log("User flipped " + cards[cardId].rank);
-    console.log(cards[cardId].cardImage);
-    console.log(cards[cardId].suit);
-
-    checkForMatch();
-
-}
-
-flipCard(0);
-flipCard(2);
-
+createBoard();
 
