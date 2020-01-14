@@ -26,14 +26,26 @@ const cards = [
 
 let cardsInPlay = [];
 
+function checkForMatch(){
 
+    if (cardsInPlay.length === 2){
+	    if (cardsInPlay[0] === cardsInPlay[1]){
+	    	alert("You found a match!")
+	    } else {
+	    	alert("Sorry, not a match.")
+        }
+    }
+}
 
 function flipCard(){
 
     let cardId = this.getAttribute('data-id');
     this.setAttribute('src', cards[cardId].cardImage);
-    
+    cardsInPlay.push(cards[cardId].rank);
+
+    console.log(cardsInPlay);
     checkForMatch();
+
 
 }
 
@@ -51,14 +63,7 @@ function createBoard(){
  
 }
 
-function checkForMatch(){
 
-	if ( cards[0].rank === cards[1].rank){
-	console.log("You found a match!");
-    } else {
-	console.log("Sorry, not a match. Try again!");
-    }
-}
 
 
 createBoard();
